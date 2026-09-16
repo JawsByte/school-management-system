@@ -125,7 +125,7 @@ services:
             AI_DETECTOR_SHARED_SECRET: ${LMS_AI_SELF_HOSTED_SECRET:-}
 
     minio:
-        image: minio/minio
+        image: pgsty/minio:latest
         container_name: school_minio
         restart: unless-stopped
         command: server /data --console-address ":9001"
@@ -157,7 +157,7 @@ services:
     # AWS_ACCESS_KEY_ID/AWS_SECRET_ACCESS_KEY/AWS_BUCKET — same "kept in
     # sync manually" trade-off already used for the minio service above.
     minio-init:
-        image: minio/mc
+        image: pgsty/mc:latest
         container_name: school_minio_init
         depends_on:
             - minio
